@@ -1,7 +1,27 @@
 import { FaClock, FaMapMarkerAlt, FaUser, FaCalendarAlt } from 'react-icons/fa';
 
+// TypeScript interfaces
+interface UpcomingEvent {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  venue: string;
+  description: string;
+  speaker: string;
+  type: string;
+  image?: string; // Optional since we have fallback handling
+}
+
+interface PastEvent {
+  title: string;
+  date: string;
+  attendees: number;
+  image?: string; // Optional since we have fallback handling
+}
+
 export default function Events() {
-  const upcomingEvents = [
+  const upcomingEvents: UpcomingEvent[] = [
     // {
     //   id: 1,
     //   title: "Python Web Development with Django",
@@ -37,7 +57,7 @@ export default function Events() {
     // }
   ];
 
-  const pastEvents = [
+  const pastEvents: PastEvent[] = [
     // {
     //   title: "Machine Learning Fundamentals",
     //   date: "2024-12-15",
@@ -142,7 +162,7 @@ export default function Events() {
               <FaCalendarAlt className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-gray-600 mb-2">No Upcoming Events</h4>
               <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                We're working on planning exciting new events for our community. 
+                We&apos;re working on planning exciting new events for our community. 
                 Stay tuned for announcements!
               </p>
               <div className="space-y-2">
@@ -197,7 +217,7 @@ export default function Events() {
               <FaCalendarAlt className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <h4 className="text-lg font-semibold text-gray-600 mb-2">No Past Events Yet</h4>
               <p className="text-gray-500 max-w-md mx-auto">
-                We're just getting started! Check back soon to see our event history 
+                We&apos;re just getting started! Check back soon to see our event history
                 and community achievements.
               </p>
             </div>

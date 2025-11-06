@@ -1,7 +1,28 @@
 import { FaTelegram, FaLinkedin, FaGithub, FaMeetup, FaWhatsapp, FaQuoteLeft, FaUsers } from 'react-icons/fa';
 
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  avatar: string;
+}
+
+interface SocialPlatform {
+  name: string;
+  description: string;
+  href: string;
+  icon: JSX.Element;
+  bgColor: string;
+}
+
+interface CommunityFeature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
 export default function Community() {
-  const communityFeatures = [
+  const communityFeatures: CommunityFeature[] = [
     {
       icon: "💬",
       title: "Active Discussions",
@@ -34,7 +55,7 @@ export default function Community() {
     }
   ];
 
-  const socialPlatforms = [
+  const socialPlatforms: SocialPlatform[] = [
     {
       name: "Telegram",
       description: "Daily discussions & announcements",
@@ -72,7 +93,7 @@ export default function Community() {
     }
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     // {
     //   name: "Aakash Verma",
     //   role: "Software Engineer at TCS",
@@ -94,7 +115,7 @@ export default function Community() {
   ];
 
   // For demonstration, uncomment to see empty state
-  // const testimonials = [];
+  // const testimonials: Testimonial[] = [];
 
   return (
     <section id="community" className="py-16 lg:py-24 bg-gray-50">
@@ -104,7 +125,7 @@ export default function Community() {
             Join Our Community
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Be part of Indore's most active Python community. Connect, learn, and grow together 
+            Be part of Indore&apos;s most active Python community. Connect, learn, and grow together
             with passionate developers from all backgrounds.
           </p>
         </div>
@@ -171,7 +192,7 @@ export default function Community() {
               <FaUsers className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-gray-600 mb-2">No Testimonials Yet</h4>
               <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                We're building an amazing community! Be one of the first members to share your 
+                We&apos;re building an amazing community! Be one of the first members to share your
                 experience and inspire others to join.
               </p>
               <div className="space-y-2">
@@ -189,11 +210,11 @@ export default function Community() {
           <div className="bg-gradient-to-r from-python-blue to-blue-600 rounded-lg p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">Ready to Join PyIndore?</h3>
             <p className="text-blue-100 mb-6">
-              Start your journey with India's most active Python community in Indore. 
+              Start your journey with India&apos;s most active Python community in Indore. 
               Connect with developers, learn new skills, and advance your career.
             </p>
             <button className="bg-python-yellow text-python-blue px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors duration-200">
-              Join Now - It's Free!
+              Join Now - It&apos;s Free!
             </button>
           </div>
         </div>

@@ -125,7 +125,7 @@ export default function Contact() {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about PyIndore? Want to collaborate or speak at our events? 
-            We'd love to hear from you!
+            We&apos;d love to hear from you!
           </p>
         </div>
 

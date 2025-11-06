@@ -8,7 +8,7 @@ export default function About() {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Building a collaborative and knowledge-rich ecosystem that empowers individuals 
-            and strengthens Indore's position as a burgeoning tech center.
+            and strengthens Indore&apos;s position as a burgeoning tech center.
           </p>
         </div>
 
@@ -17,7 +17,7 @@ export default function About() {
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Mission</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Python Indore is more than just a community – we're a movement dedicated to fostering 
+              Python Indore is more than just a community – we&apos;re a movement dedicated to fostering 
               innovation, collaboration, and continuous learning in the world of Python programming. 
               Our mission is to create an inclusive environment where knowledge flows freely and 
               everyone can grow their skills.
