@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  FaMeetup, 
-  FaLinkedin, 
-  FaWhatsapp, 
-  FaTelegram, 
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  FaMeetup,
+  FaLinkedin,
+  FaWhatsapp,
+  FaTelegram,
   FaTwitter,
-  FaCalendarAlt,
-  FaEnvelope, 
-  FaMapMarkerAlt, 
+  FaEnvelope,
+  FaMapMarkerAlt,
   FaCalendar,
-  FaChevronDown 
+  FaChevronDown
 } from 'react-icons/fa';
 import { SiEventbrite } from 'react-icons/si';
 
@@ -26,68 +26,26 @@ export default function Contact() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const socialLinks = [
-    {
-      name: 'Meetup',
-      description: 'RSVP Events',
-      href: 'https://www.meetup.com/pyindore',
-      icon: <FaMeetup className="w-6 h-6" />
-    },
-    {
-      name: 'LinkedIn',
-      description: 'Follow Page',
-      href: 'https://www.linkedin.com/company/pyindore',
-      icon: <FaLinkedin className="w-6 h-6" />
-    },
-    {
-      name: 'WhatsApp',
-      description: 'Join Chat',
-      href: 'https://chat.whatsapp.com/pyindore',
-      icon: <FaWhatsapp className="w-6 h-6" />
-    },
-    {
-      name: 'Telegram',
-      description: 'Join Group',
-      href: 'https://t.me/pyindore',
-      icon: <FaTelegram className="w-6 h-6" />
-    },
-    {
-      name: 'Luma',
-      description: 'Events',
-      href: 'https://lu.ma/pyindore',
-      icon: <SiEventbrite className="w-6 h-6" />
-    },
-    {
-      name: 'Twitter',
-      description: 'Follow Us',
-      href: 'https://twitter.com/pyindore',
-      icon: <FaTwitter className="w-6 h-6" />
-    }
+    { name: 'Meetup', description: 'RSVP Events', href: 'https://www.meetup.com/pyindore', icon: <FaMeetup className="w-5 h-5" />, color: 'text-[#ed1c40]' },
+    { name: 'LinkedIn', description: 'Follow Page', href: 'https://www.linkedin.com/company/pyindore', icon: <FaLinkedin className="w-5 h-5" />, color: 'text-[#0077b5]' },
+    { name: 'WhatsApp', description: 'Join Chat', href: 'https://chat.whatsapp.com/pyindore', icon: <FaWhatsapp className="w-5 h-5" />, color: 'text-[#25d366]' },
+    { name: 'Telegram', description: 'Join Group', href: 'https://t.me/pyindore', icon: <FaTelegram className="w-5 h-5" />, color: 'text-[#0088cc]' },
+    { name: 'Luma', description: 'Events', href: 'https://lu.ma/pyindore', icon: <SiEventbrite className="w-5 h-5" />, color: 'text-[#eb4612]' },
+    { name: 'Twitter', description: 'Follow Us', href: 'https://twitter.com/pyindore', icon: <FaTwitter className="w-5 h-5" />, color: 'text-[#1da1f2]' }
   ];
 
   const faqData = [
     {
       question: "How do I join PyIndore?",
-      answer: "Simply join our Telegram group or follow us on social media to get started! We welcome everyone from beginners to experts. You can also attend our monthly meetups to connect with the community in person."
+      answer: "Simply join our Telegram group or follow us on social media to get started! We welcome everyone from beginners to experts."
     },
     {
       question: "Are events free?",
-      answer: "Most of our events are free, though some workshops may have a nominal fee for materials. We believe in making Python education accessible to everyone. Premium workshops might charge a small fee to cover venue and material costs."
+      answer: "Most of our events are free. Premium workshops might charge a small fee to cover venue and material costs."
     },
     {
       question: "Can I speak at an event?",
-      answer: "Absolutely! We welcome speakers of all experience levels. Contact us with your topic idea and we'll help you prepare. Whether you're sharing a project, teaching a concept, or discussing your Python journey, we'd love to hear from you."
-    },
-    {
-      question: "What skill level do I need to attend?",
-      answer: "All skill levels are welcome! We have events for complete beginners as well as advanced developers. Our community is supportive and inclusive, and we encourage learning at every stage."
-    },
-    {
-      question: "How often do you organize events?",
-      answer: "We organize monthly meetups on the 2nd Saturday of each month, plus additional workshops and special events throughout the year. Follow our social media channels to stay updated on upcoming events."
-    },
-    {
-      question: "Can I volunteer or contribute?",
-      answer: "Yes! We're always looking for volunteers to help organize events, mentor newcomers, or contribute to community projects. It's a great way to give back and develop leadership skills."
+      answer: "Absolutely! We welcome speakers of all experience levels. Contact us with your topic idea and we'll help you prepare."
     }
   ];
 
@@ -96,214 +54,185 @@ export default function Contact() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-      type: 'general'
-    });
     alert('Thank you for your message! We\'ll get back to you soon.');
+    setFormData({ name: '', email: '', message: '', type: 'general' });
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24">
+    <section id="contact" className="py-24 bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions about PyIndore? Want to collaborate or speak at our events? 
+        <div className="text-center mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-bold text-white mb-6"
+          >
+            Get In <span className="text-python-blue">Touch</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-dark-muted max-w-3xl mx-auto"
+          >
+            Have questions about PyIndore? Want to collaborate or speak at our events?
             We&apos;d love to hear from you!
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-dark-card border border-dark-border rounded-3xl p-10 shadow-2xl"
+          >
+            <h3 className="text-2xl font-bold text-white mb-8">Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-python-blue focus:border-transparent"
-                  placeholder="Your full name"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-dark-muted mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-python-blue focus:border-transparent transition-all outline-none"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-dark-muted mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-python-blue focus:border-transparent transition-all outline-none"
+                    placeholder="john@example.com"
+                  />
+                </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-python-blue focus:border-transparent"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Inquiry Type
-                </label>
+                <label className="block text-sm font-medium text-dark-muted mb-2">Inquiry Type</label>
                 <select
-                  id="type"
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-python-blue focus:border-transparent"
+                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-python-blue focus:border-transparent transition-all outline-none appearance-none"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="speaker">Become a Speaker</option>
                   <option value="partnership">Partnership</option>
                   <option value="volunteer">Volunteer</option>
-                  <option value="other">Other</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
+                <label className="block text-sm font-medium text-dark-muted mb-2">Message</label>
                 <textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-python-blue focus:border-transparent"
-                  placeholder="Tell us more about your inquiry..."
+                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-python-blue focus:border-transparent transition-all outline-none resize-none"
+                  placeholder="How can we help you?"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-python-blue text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+                className="w-full bg-python-blue hover:bg-blue-600 text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg shadow-python-blue/20"
               >
                 Send Message
               </button>
             </form>
-          </div>
+          </motion.div>
 
-          {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Quick Contact */}
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Contact</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-python-blue rounded-lg flex items-center justify-center">
-                    <FaEnvelope className="w-4 h-4 text-white" />
+          {/* Info & FAQ */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            {/* Quick Info */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: FaEnvelope, label: 'Email', value: 'contact@pyindore.org' },
+                { icon: FaMapMarkerAlt, label: 'Location', value: 'Indore, MP' },
+              ].map((info, i) => (
+                <div key={i} className="bg-dark-card/50 border border-dark-border p-6 rounded-2xl flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-python-blue/10 rounded-xl flex items-center justify-center text-python-blue">
+                    <info.icon size={20} />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Email</p>
-                    <p className="text-gray-600">contact@pyindore.org</p>
+                    <p className="text-xs text-dark-muted uppercase tracking-wider font-bold">{info.label}</p>
+                    <p className="text-white font-medium">{info.value}</p>
                   </div>
                 </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-python-blue rounded-lg flex items-center justify-center">
-                    <FaMapMarkerAlt className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">Location</p>
-                    <p className="text-gray-600">Indore, Madhya Pradesh</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-python-blue rounded-lg flex items-center justify-center">
-                    <FaCalendar className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">Meetups</p>
-                    <p className="text-gray-600">Every 2nd Saturday</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* Social Links */}
-            <div className="bg-gradient-to-br from-python-blue to-blue-600 rounded-lg p-6 text-white">
-              <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-              <p className="text-blue-100 mb-6">
-                Stay updated with our latest events, announcements, and community discussions.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {socialLinks.map((link, index) => (
-                  <a 
-                    key={index}
-                    href={link.href} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white bg-opacity-20 rounded-lg p-3 flex flex-col items-center hover:bg-opacity-30 transition-colors duration-200"
+            {/* Social Grid */}
+            <div className="bg-dark-card border border-dark-border p-8 rounded-3xl">
+              <h4 className="text-lg font-bold text-white mb-6">Follow Our Journey</h4>
+              <div className="grid grid-cols-3 gap-4">
+                {socialLinks.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.href}
+                    className="flex flex-col items-center p-4 bg-dark-bg border border-dark-border rounded-2xl hover:border-python-blue/50 transition-all group"
                   >
-                    <div className="mb-2">{link.icon}</div>
-                    <div className="text-xs font-semibold">{link.name}</div>
-                    <div className="text-xs text-blue-100">{link.description}</div>
+                    <div className={`${link.color} transition-colors mb-2`}>{link.icon}</div>
+                    <span className="text-[10px] text-dark-muted font-bold uppercase tracking-tighter">{link.name}</span>
                   </a>
                 ))}
               </div>
             </div>
 
             {/* FAQ */}
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
-              <div className="space-y-3">
-                {faqData.map((faq, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleFaq(index)}
-                      className="w-full px-4 py-3 text-left bg-white hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-                    >
-                      <span className="font-medium text-gray-900">{faq.question}</span>
-                      <FaChevronDown
-                        className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
-                          expandedFaq === index ? 'transform rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    <div
-                      className={`transition-all duration-300 ease-in-out ${
-                        expandedFaq === index
-                          ? 'max-h-96 opacity-100'
-                          : 'max-h-0 opacity-0'
-                      } overflow-hidden`}
-                    >
-                      <div className="px-4 pb-4 pt-2 bg-gray-50">
-                        <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="space-y-4">
+              <h4 className="text-lg font-bold text-white mb-6">Common Questions</h4>
+              {faqData.map((faq, index) => (
+                <div key={index} className="bg-dark-card/30 border border-dark-border rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full px-6 py-4 text-left flex justify-between items-center group"
+                  >
+                    <span className="font-medium text-white group-hover:text-python-blue transition-colors">{faq.question}</span>
+                    <FaChevronDown className={`text-dark-muted transition-transform duration-300 ${expandedFaq === index ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {expandedFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 text-dark-muted text-sm leading-relaxed">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
