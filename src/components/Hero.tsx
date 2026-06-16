@@ -1,86 +1,105 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+});
+
+const pillItems = ['Free to Join', 'Open to All', 'Indore, MP'];
 
 export default function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-python-blue/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-python-yellow/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+    <section id="home" className="relative pt-40 pb-28 lg:pt-52 lg:pb-36 overflow-hidden">
+      {/* Background orbs */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div
+          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-python-blue/20 blur-[120px] animate-glow"
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-python-yellow/8 blur-[100px] animate-glow"
+          style={{ animationDelay: '4s' }}
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center">
-          {/* Hero Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight"
-          >
-            Welcome to{' '}
-            <span className="text-python-blue">Py</span>
-            <span className="text-python-yellow">Indore</span>
-          </motion.h1>
-
-          {/* Hero Subheading */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-dark-muted mb-10 max-w-4xl mx-auto leading-relaxed"
-          >
-            The leading and official community dedicated to Python programming in Indore, India
-          </motion.p>
-
-          {/* Hero Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-dark-muted/80 mb-14 max-w-3xl mx-auto"
-          >
-            Join our vibrant, active, and rapidly growing hub for everyone passionate about Python –
-            from seasoned software engineers and data scientists to aspiring developers.
-          </motion.p>
-
-          {/* CTA Buttons */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        {/* Logo */}
+        <motion.div {...fadeUp(0)} className="flex justify-center mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-24"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <button className="group relative bg-python-blue text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-blue-600 transition-all duration-300 shadow-[0_0_20px_rgba(48,105,152,0.3)] hover:shadow-[0_0_30px_rgba(48,105,152,0.5)] w-full sm:w-auto">
-              Join Our Community
-              <span className="absolute inset-0 rounded-full border-2 border-white/20 scale-100 group-hover:scale-110 transition-transform duration-300 opacity-0 group-hover:opacity-100" />
-            </button>
-            <button className="border-2 border-python-blue/50 text-python-blue px-10 py-4 rounded-full text-lg font-bold hover:bg-python-blue/10 transition-all duration-300 w-full sm:w-auto">
-              Upcoming Events
-            </button>
+            <Image
+              src="/logo.png"
+              alt="PyIndore"
+              width={100}
+              height={130}
+              className="object-contain logo-glow animate-float"
+            />
           </motion.div>
+        </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        {/* Badge pill */}
+        <motion.div {...fadeUp(0.05)} className="inline-flex mb-8">
+          <span className="border border-python-blue/30 bg-python-blue/10 text-python-blue-bright text-xs rounded-full px-4 py-1.5 tracking-wide">
+            Python Community · Indore, India
+          </span>
+        </motion.div>
+
+        {/* Main heading */}
+        <motion.h1
+          {...fadeUp(0.12)}
+          className="text-6xl md:text-[5.5rem] lg:text-[7rem] font-bold tracking-tight leading-none mb-6"
+        >
+          <span className="block text-gradient-hero">Build with Python.</span>
+          <span className="block text-gradient-blue">In Indore.</span>
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.p
+          {...fadeUp(0.22)}
+          className="text-dark-muted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12"
+        >
+          A new Python community forming in Indore. Join us from the very beginning,
+          help shape the culture, and grow alongside fellow developers.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          {...fadeUp(0.32)}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+        >
+          <a
+            href="#community"
+            className="bg-python-blue text-white rounded-full px-8 py-3.5 font-semibold btn-glow hover:bg-python-blue-bright transition-all duration-200 w-full sm:w-auto text-center"
           >
-            {[
-              { label: 'Active Members', value: '500+' },
-              { label: 'Events Hosted', value: '50+' },
-              { label: 'Years Strong', value: '5+' },
-            ].map((stat, index) => (
-              <div key={index} className="bg-dark-card/50 backdrop-blur-md border border-dark-border rounded-2xl p-8 hover:border-python-blue/50 transition-colors duration-300 group">
-                <div className="text-4xl font-black text-python-blue mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
-                <div className="text-dark-muted font-medium uppercase tracking-wider text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+            Join the Community
+          </a>
+          <a
+            href="#events"
+            className="liquid-glass rounded-full px-8 py-3.5 font-semibold text-dark-muted hover:text-dark-text transition-all duration-200 w-full sm:w-auto text-center glass-hover"
+          >
+            View Events →
+          </a>
+        </motion.div>
+
+        {/* Founding pills */}
+        <motion.div
+          {...fadeUp(0.42)}
+          className="flex items-center justify-center gap-3 flex-wrap"
+        >
+          {pillItems.map((item) => (
+            <span
+              key={item}
+              className="liquid-glass rounded-full px-4 py-1.5 text-dark-muted text-xs font-medium"
+            >
+              {item}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

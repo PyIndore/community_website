@@ -1,116 +1,156 @@
-'use client';
-
+import Image from 'next/image';
 import { FaTelegram, FaLinkedin, FaGithub, FaMeetup, FaHeart } from 'react-icons/fa';
+
+const quickLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Events', href: '#events' },
+  { name: 'Community', href: '#community' },
+  { name: 'Contact', href: '#contact' },
+];
+
+const resources = [
+  { name: 'Python.org', href: 'https://python.org' },
+  { name: 'PyPI', href: 'https://pypi.org' },
+  { name: 'Python Docs', href: 'https://docs.python.org' },
+];
+
+const socials = [
+  { icon: FaTelegram, href: 'https://t.me/pyindore', label: 'Telegram' },
+  { icon: FaLinkedin, href: 'https://linkedin.com/company/pyindore', label: 'LinkedIn' },
+  { icon: FaGithub, href: 'https://github.com/pyindore', label: 'GitHub' },
+  { icon: FaMeetup, href: 'https://meetup.com/pyindore', label: 'Meetup' },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Events', href: '#events' },
-    { name: 'Community', href: '#community' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const resources = [
-    { name: 'Python.org', href: 'https://python.org' },
-    { name: 'PyPI', href: 'https://pypi.org' },
-    { name: 'Python Docs', href: 'https://docs.python.org' },
-  ];
-
   return (
-    <footer className="bg-dark-bg border-t border-dark-border pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl font-black tracking-tighter text-white">
-                <span className="text-python-blue">Py</span>Indore
-              </span>
-            </div>
-            <p className="text-dark-muted text-sm leading-relaxed max-w-xs">
-              The official community dedicated to Python programming in Indore, India.
-              Empowering developers through knowledge sharing.
-            </p>
-            <div className="flex space-x-4">
-              {[
-                { icon: FaTelegram, href: 'https://t.me/pyindore', color: 'text-[#0088cc]' },
-                { icon: FaLinkedin, href: 'https://linkedin.com/company/pyindore', color: 'text-[#0077b5]' },
-                { icon: FaGithub, href: 'https://github.com/pyindore', color: 'text-white' },
-                { icon: FaMeetup, href: 'https://meetup.com/pyindore', color: 'text-[#ed1c40]' },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  className="w-10 h-10 bg-dark-card border border-dark-border rounded-xl flex items-center justify-center hover:border-python-blue/50 transition-all duration-300 group"
-                >
-                  <social.icon size={18} className={`${social.color} transition-transform group-hover:scale-110`} />
-                </a>
-              ))}
-            </div>
-          </div>
+    <>
+      <div className="gradient-divider" />
+      <footer className="relative py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Navigation</h4>
-            <ul className="space-y-4">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-dark-muted hover:text-white transition-colors text-sm font-medium">
-                    {link.name}
+          {/* 4-column grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-8">
+
+            {/* Brand column */}
+            <div>
+              <a href="#home" className="flex items-center gap-2.5 mb-5">
+                <Image
+                  src="/logo.png"
+                  alt="PyIndore"
+                  width={22}
+                  height={28}
+                  className="object-contain logo-glow"
+                />
+                <span className="text-xl font-bold text-dark-text">
+                  <span className="text-gradient-blue">Py</span>Indore
+                </span>
+              </a>
+              <p className="text-dark-tertiary text-sm leading-relaxed max-w-xs mb-6">
+                The official Python community in Indore, India. Empowering developers through
+                knowledge sharing, collaboration, and innovation.
+              </p>
+              <div className="flex items-center gap-2">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-9 h-9 rounded-xl liquid-glass flex items-center justify-center hover:border-dark-border-strong transition-all duration-200 glass-hover"
+                  >
+                    <social.icon size={15} className="text-dark-muted" />
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Resources */}
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Resources</h4>
-            <ul className="space-y-4">
-              {resources.map((resource) => (
-                <li key={resource.name}>
-                  <a href={resource.href} target="_blank" rel="noopener noreferrer" className="text-dark-muted hover:text-white transition-colors text-sm font-medium">
-                    {resource.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Navigation column */}
+            <div>
+              <h4 className="text-dark-text font-semibold text-xs uppercase tracking-widest mb-5">
+                Navigation
+              </h4>
+              <ul className="space-y-3.5">
+                {quickLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-dark-tertiary hover:text-dark-muted text-sm transition-colors duration-200"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Newsletter</h4>
-            <p className="text-dark-muted text-sm mb-6">Stay updated with our latest events.</p>
-            <div className="flex flex-col space-y-3">
+            {/* Resources column */}
+            <div>
+              <h4 className="text-dark-text font-semibold text-xs uppercase tracking-widest mb-5">
+                Resources
+              </h4>
+              <ul className="space-y-3.5">
+                {resources.map((resource) => (
+                  <li key={resource.name}>
+                    <a
+                      href={resource.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-dark-tertiary hover:text-dark-muted text-sm transition-colors duration-200"
+                    >
+                      {resource.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Newsletter column */}
+            <div>
+              <h4 className="text-dark-text font-semibold text-xs uppercase tracking-widest mb-5">
+                Newsletter
+              </h4>
+              <p className="text-dark-tertiary text-sm mb-5 leading-relaxed">
+                Stay updated with our latest events and announcements.
+              </p>
               <input
                 type="email"
                 placeholder="Email address"
-                className="bg-dark-card border border-dark-border text-white px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-python-blue transition-all"
+                className="w-full liquid-glass rounded-xl px-4 py-2.5 text-sm text-dark-text placeholder-dark-tertiary outline-none focus:border-dark-border-strong transition-all mb-2.5 border-0"
               />
-              <button className="bg-python-blue hover:bg-blue-600 text-white py-3 rounded-xl font-bold text-sm transition-all">
+              <button className="w-full bg-python-blue text-white rounded-xl py-2.5 text-sm font-semibold hover:bg-python-blue-bright btn-glow transition-all duration-200">
                 Subscribe
               </button>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-dark-border pt-10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-dark-muted text-xs font-medium">
-            © {currentYear} PyIndore. All rights reserved.
-          </p>
-          <div className="flex items-center text-xs text-dark-muted font-medium">
-            Made with <FaHeart className="text-red-500 mx-1.5 animate-pulse" /> by PyIndore Community
           </div>
-          <div className="flex space-x-6 text-xs font-medium">
-            <a href="#" className="text-dark-muted hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="text-dark-muted hover:text-white transition-colors">Terms</a>
+
+          {/* Bottom bar */}
+          <div className="gradient-divider my-8" />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-dark-tertiary text-xs">
+              © {currentYear} PyIndore. All rights reserved.
+            </p>
+            <div className="flex items-center gap-1 text-dark-tertiary text-xs">
+              Made with{' '}
+              <FaHeart className="text-python-yellow mx-0.5" size={10} />{' '}
+              by PyIndore Community
+            </div>
+            <div className="flex items-center gap-5">
+              <a href="#" className="text-dark-tertiary hover:text-dark-muted text-xs transition-colors duration-200">
+                Privacy
+              </a>
+              <a href="#" className="text-dark-tertiary hover:text-dark-muted text-xs transition-colors duration-200">
+                Terms
+              </a>
+            </div>
           </div>
+
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
