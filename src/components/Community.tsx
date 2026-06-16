@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaTelegram, FaLinkedin, FaGithub, FaMeetup, FaWhatsapp, FaQuoteLeft, FaUsers } from 'react-icons/fa';
+import { FaTelegram, FaLinkedin, FaGithub, FaMeetup, FaWhatsapp, FaUsers } from 'react-icons/fa';
+import React from 'react';
 
 interface Testimonial {
   name: string;
@@ -14,7 +15,7 @@ interface SocialPlatform {
   name: string;
   description: string;
   href: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   bgColor: string;
 }
 
@@ -54,7 +55,7 @@ export default function Community() {
     {
       icon: "🏆",
       title: "Recognition",
-      description: "Celebrate achievements and get recognized for your contributions to the community."
+      description: "Celebrate achievements and get recognised for your contributions to the community."
     }
   ];
 
@@ -115,155 +116,187 @@ export default function Community() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.08 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1 }
+    hidden: { opacity: 0, y: 14 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
   };
 
   return (
-    <section id="community" className="py-24 bg-dark-bg relative">
+    <section id="community" className="py-32 relative">
+      {/* Ambient orb */}
+      <div className="absolute right-0 top-1/4 w-[500px] h-[500px] bg-python-yellow/5 rounded-full blur-[120px] pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+
+        {/* Gradient divider */}
+        <div className="gradient-divider mb-20" />
+
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            transition={{ duration: 0.4 }}
+            className="mb-4"
           >
-            Join Our <span className="text-python-yellow">Community</span>
+            <span className="section-chip">Community</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+          >
+            <span className="text-dark-text">Be part of </span>
+            <span className="text-gradient-blue">something bigger</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-dark-muted max-w-3xl mx-auto"
+            transition={{ duration: 0.4, delay: 0.14 }}
+            className="text-dark-muted text-lg max-w-2xl mx-auto mb-16"
           >
-            Be part of Indore&apos;s most active Python community. Connect, learn, and grow together
-            with passionate developers from all backgrounds.
+            Connect with Indore&apos;s most active Python community. Learn, collaborate, and grow
+            alongside passionate developers.
           </motion.p>
         </div>
 
-        {/* Community Features */}
+        {/* Community features grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {communityFeatures.map((feature, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
-              className="bg-dark-card border border-dark-border p-8 rounded-2xl hover:border-python-blue/30 transition-all duration-300"
+              className="liquid-glass rounded-2xl p-6 glass-hover"
             >
-              <div className="text-4xl mb-6">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-dark-muted leading-relaxed">{feature.description}</p>
+              <div className="text-3xl mb-4">{feature.icon}</div>
+              <h3 className="text-dark-text font-semibold mb-2">{feature.title}</h3>
+              <p className="text-dark-muted text-sm leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Community Platforms */}
+        {/* Platforms section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-dark-card/50 border border-dark-border rounded-3xl p-10 mb-24"
+          transition={{ duration: 0.5 }}
+          className="mt-16 liquid-glass rounded-2xl p-8"
         >
-          <h3 className="text-2xl font-bold text-white mb-12 text-center">Connect With Us</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <h3 className="text-dark-text font-semibold text-lg mb-8">Find us everywhere</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {socialPlatforms.map((platform, index) => (
               <a
                 key={index}
                 href={platform.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center group"
+                className="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-dark-bg/40 transition-all cursor-pointer group"
               >
-                <div className={`w-16 h-16 ${platform.bgColor} rounded-2xl flex items-center justify-center mb-4 text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-12 h-12 ${platform.bgColor} rounded-xl flex items-center justify-center text-white mb-1 group-hover:scale-105 transition-transform`}>
                   {platform.icon}
                 </div>
-                <h4 className="font-bold text-white text-sm mb-1">{platform.name}</h4>
-                <p className="text-dark-muted text-[10px] text-center uppercase tracking-widest">{platform.description}</p>
+                <span className="text-dark-muted text-xs font-medium">{platform.name}</span>
               </a>
             ))}
           </div>
         </motion.div>
 
         {/* Testimonials */}
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-12 text-center">What Our Members Say</h3>
-
+        <div className="mt-16">
           {testimonials.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-dark-card border border-dark-border p-8 rounded-2xl relative"
-                >
-                  <FaQuoteLeft className="absolute top-6 right-8 text-python-blue/10 w-12 h-12" />
-                  <p className="text-dark-muted italic leading-relaxed mb-8 relative z-10">
-                    &quot;{testimonial.content}&quot;
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-python-blue to-blue-600 rounded-full flex items-center justify-center text-white font-black mr-4">
-                      {testimonial.avatar}
+            <>
+              <h3 className="text-dark-text font-semibold text-lg mb-8">What our members say</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="liquid-glass rounded-2xl p-6"
+                  >
+                    <p className="text-dark-muted text-sm italic leading-relaxed mb-6">
+                      &quot;{testimonial.content}&quot;
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-python-blue/20 rounded-full flex items-center justify-center text-python-blue font-semibold text-sm">
+                        {testimonial.avatar}
+                      </div>
+                      <div>
+                        <p className="text-dark-text font-semibold text-sm">{testimonial.name}</p>
+                        <p className="text-python-blue text-xs">{testimonial.role}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-white">{testimonial.name}</h4>
-                      <p className="text-python-blue text-xs font-medium">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  </motion.div>
+                ))}
+              </div>
+            </>
           ) : (
-            <div className="text-center py-20 bg-dark-card/30 border border-dark-border rounded-3xl">
-              <FaUsers className="w-16 h-16 text-dark-muted/30 mx-auto mb-6" />
-              <h4 className="text-xl font-bold text-white mb-3">Community is Growing</h4>
-              <p className="text-dark-muted mb-8 max-w-md mx-auto">
-                Be one of the first to share your story and inspire others!
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="liquid-glass rounded-2xl py-16 text-center"
+            >
+              <FaUsers className="text-dark-tertiary/40 mx-auto mb-4" style={{ width: 40, height: 40 }} />
+              <h4 className="text-dark-text font-semibold mb-2">Stories coming soon</h4>
+              <p className="text-dark-muted text-sm max-w-sm mx-auto">
+                Be among the first to share your PyIndore journey and inspire others.
               </p>
-              <button className="bg-python-blue text-white px-8 py-3 rounded-full font-bold hover:bg-blue-600 transition-all duration-300">
+              <button className="liquid-glass rounded-full px-6 py-2 text-sm text-dark-muted hover:text-dark-text glass-hover transition-all mt-6">
                 Share Your Story
               </button>
-            </div>
+            </motion.div>
           )}
         </div>
 
         {/* Join CTA */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24"
+          transition={{ duration: 0.5 }}
+          className="mt-16"
         >
-          <div className="bg-gradient-to-br from-python-blue to-blue-800 rounded-3xl p-12 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+          <div className="liquid-glass-blue rounded-3xl p-12 text-center relative overflow-hidden">
+            {/* Decorative orb inside */}
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-python-blue/20 rounded-full blur-[80px] pointer-events-none" />
             <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-6">Ready to Join PyIndore?</h3>
-              <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-                Start your journey with India&apos;s most active Python community in Indore.
-                Connect with developers, learn new skills, and advance your career.
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-dark-text mb-4">
+                Ready to join <span className="text-gradient-blue">PyIndore</span>?
+              </h3>
+              <p className="text-dark-muted text-lg mb-8 max-w-xl mx-auto">
+                Start your journey with Indore&apos;s most active Python community. Connect with developers,
+                learn new skills, and advance your career.
               </p>
-              <button className="bg-python-yellow text-dark-bg px-12 py-5 rounded-full font-black text-xl hover:scale-105 transition-transform duration-300 shadow-2xl shadow-python-yellow/20">
-                Join Now - It&apos;s Free!
-              </button>
+              <a
+                href="https://t.me/pyindore"
+                className="bg-python-yellow text-dark-bg rounded-full px-10 py-4 font-semibold hover:opacity-90 transition-all inline-block"
+                style={{ boxShadow: '0 0 30px rgba(255,212,59,0.25)' }}
+              >
+                Join Now — It&apos;s Free
+              </a>
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
