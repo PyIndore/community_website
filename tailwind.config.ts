@@ -13,15 +13,16 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         python: {
-          blue: '#306998',
-          'blue-bright': '#4a90d9',
+          // Admin-editable (driven by /site.theme via CSS vars in layout.tsx); hex is the default.
+          blue: 'var(--python-blue, #306998)',
+          'blue-bright': 'var(--python-blue-bright, #4a90d9)',
           'blue-deep': '#1e4d7a',
-          yellow: '#ffd43b',
+          yellow: 'var(--python-yellow, #ffd43b)',
           'yellow-bright': '#ffe566',
           'yellow-deep': '#e6b800',
         },
         dark: {
-          bg: '#03081a',
+          bg: 'var(--dark-bg, #03081a)',
           surface: '#071020',
           card: '#0d1b30',
           elevated: '#132240',
