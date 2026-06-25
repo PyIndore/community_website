@@ -5,8 +5,7 @@ import React, { useState } from 'react';
 import { FaChevronDown, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import type { Faq, InquiryType, Section, Site, SocialLink } from '@/lib/types';
 import { socialMeta } from './social-meta';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3001/api/v1/public';
+import { API_BASE } from '@/lib/api-base';
 
 export default function Contact({
   intro,
