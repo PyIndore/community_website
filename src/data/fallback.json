@@ -1,0 +1,456 @@
+{
+  "site": {
+    "nav": [
+      {
+        "href": "#home",
+        "label": "Home",
+        "order": 0,
+        "location": "header"
+      },
+      {
+        "href": "#about",
+        "label": "About",
+        "order": 1,
+        "location": "header"
+      },
+      {
+        "href": "#events",
+        "label": "Events",
+        "order": 2,
+        "location": "header"
+      },
+      {
+        "href": "#community",
+        "label": "Community",
+        "order": 3,
+        "location": "header"
+      },
+      {
+        "href": "#contact",
+        "label": "Contact",
+        "order": 4,
+        "location": "header"
+      }
+    ],
+    "seo": {
+      "ogImage": null,
+      "titleDefault": "PyIndore — Python Community in Indore",
+      "descriptionDefault": "The official Python community in Indore, India. Join early, help shape the culture, and grow alongside fellow developers."
+    },
+    "brand": {
+      "name": "PyIndore",
+      "logoUrl": "/logo.png",
+      "tagline": "The Python community in Indore",
+      "faviconUrl": null
+    },
+    "theme": {
+      "fonts": {
+        "body": "Inter",
+        "heading": "Outfit"
+      },
+      "colors": {
+        "accent": "#4a90d9",
+        "brandPrimary": "#306998",
+        "brandSecondary": "#ffd43b"
+      },
+      "background": "#03081a"
+    },
+    "footer": {
+      "blurb": "The official Python community in Indore, India. Empowering developers through knowledge sharing, collaboration, and innovation.",
+      "copyright": "© PyIndore. All rights reserved.",
+      "legalLinks": [
+        {
+          "url": "#",
+          "label": "Privacy"
+        },
+        {
+          "url": "#",
+          "label": "Terms"
+        }
+      ],
+      "madeWithText": "Made with ❤️ by PyIndore Community",
+      "resourceLinks": [
+        {
+          "url": "https://python.org",
+          "label": "Python.org"
+        },
+        {
+          "url": "https://pypi.org",
+          "label": "PyPI"
+        },
+        {
+          "url": "https://docs.python.org",
+          "label": "Python Docs"
+        }
+      ],
+      "newsletterCopy": "Stay updated with our latest events and announcements."
+    },
+    "header": {
+      "ctaHref": "#community",
+      "ctaLabel": "Join Community"
+    },
+    "contact": {
+      "email": "contact@pyindore.org",
+      "location": "Indore, MP"
+    }
+  },
+  "sections": [
+    {
+      "id": "e7594edc-8450-4a33-bc23-9954194ceb74",
+      "order": 0,
+      "page": "home",
+      "key": "hero",
+      "eyebrow": "Python Community · Indore, India",
+      "heading": "Build with Python. In Indore.",
+      "subheading": "A new Python community forming in Indore. Join us from the very beginning, help shape the culture, and grow alongside fellow developers.",
+      "body": null,
+      "ctas": [
+        {
+          "href": "#community",
+          "label": "Join the Community"
+        },
+        {
+          "href": "#events",
+          "label": "View Events"
+        }
+      ],
+      "items": [
+        {
+          "label": "Free to Join"
+        },
+        {
+          "label": "Open to All"
+        },
+        {
+          "label": "Indore, MP"
+        }
+      ],
+      "data": {}
+    },
+    {
+      "id": "026d9270-6534-4459-ba9e-4070d41f15f6",
+      "order": 1,
+      "page": "home",
+      "key": "about",
+      "eyebrow": "What We Do",
+      "heading": "Empowering Python developers in Central India",
+      "subheading": "We are a community of Python enthusiasts in Indore dedicated to promoting Python through collaboration, education, and innovation.",
+      "body": "PyIndore aims to build a strong ecosystem for Python developers in Central India. We believe in the power of community-driven learning.",
+      "ctas": [],
+      "items": [
+        {
+          "label": "Monthly Tech Talks"
+        },
+        {
+          "label": "Hands-on Workshops"
+        },
+        {
+          "label": "Networking Events"
+        },
+        {
+          "label": "Mentorship Programs"
+        }
+      ],
+      "data": {
+        "tiles": [
+          {
+            "title": "Innovation First",
+            "variant": "blue",
+            "description": "We push boundaries and embrace modern Python practices."
+          },
+          {
+            "title": "Community Driven",
+            "variant": "gold",
+            "description": "Every decision is made with our members at heart."
+          }
+        ],
+        "features": [
+          {
+            "icon": "lightbulb",
+            "title": "Knowledge Sharing",
+            "description": "Regular meetups, workshops, and seminars to share Python expertise and best practices."
+          },
+          {
+            "icon": "users",
+            "title": "Vibrant Community",
+            "description": "A diverse group of developers — from beginners to experts — helping each other grow."
+          },
+          {
+            "icon": "code",
+            "title": "Open Source",
+            "description": "Encouraging contributions to Python projects and fostering an open-source culture."
+          },
+          {
+            "icon": "academic",
+            "title": "Learning Hub",
+            "description": "Resources and mentorship for students and professionals to master Python."
+          }
+        ]
+      }
+    },
+    {
+      "id": "0afb1b85-8ad9-45a5-bf13-fcf1c111ae62",
+      "order": 2,
+      "page": "home",
+      "key": "events-intro",
+      "eyebrow": "Events & Workshops",
+      "heading": "Learn, connect, and grow together",
+      "subheading": "Join our regular meetups, workshops, and seminars to sharpen your Python skills and connect with fellow developers.",
+      "body": null,
+      "ctas": [],
+      "items": [],
+      "data": {
+        "speakerCta": {
+          "body": "Share your Python knowledge with our community. All experience levels are welcome.",
+          "href": "#contact",
+          "label": "Become a Speaker",
+          "heading": "Want to speak at PyIndore?"
+        }
+      }
+    },
+    {
+      "id": "bcf621be-806a-4a46-a2c3-7ebe3ddb5129",
+      "order": 3,
+      "page": "home",
+      "key": "community-intro",
+      "eyebrow": "Community",
+      "heading": "Be part of something bigger",
+      "subheading": "Connect with Indore's most active Python community. Learn, collaborate, and grow alongside passionate developers.",
+      "body": null,
+      "ctas": [],
+      "items": [],
+      "data": {
+        "joinCta": {
+          "body": "Start your journey with Indore's most active Python community. Connect with developers, learn new skills, and advance your career.",
+          "label": "Join Now — It's Free",
+          "heading": "Ready to join PyIndore?"
+        }
+      }
+    },
+    {
+      "id": "cff6dcde-c728-4141-9e15-fea871cb27ed",
+      "order": 4,
+      "page": "home",
+      "key": "contact-intro",
+      "eyebrow": "Contact",
+      "heading": "Get in touch",
+      "subheading": "Have questions about PyIndore? Want to collaborate or speak at our events? We'd love to hear from you.",
+      "body": null,
+      "ctas": [],
+      "items": [],
+      "data": {}
+    }
+  ],
+  "events": [
+    {
+      "id": "5f1c4319-18f5-4a4d-81da-d9066eb38622",
+      "slug": "async-python-deep-dive",
+      "title": "Async Python Deep Dive",
+      "description": "Understanding asyncio, event loops, and concurrency in Python.",
+      "type": "Talk",
+      "startsAt": "2026-07-21 12:29:55.109+00",
+      "endsAt": "2026-07-21 14:29:55.109+00",
+      "venue": "IIT Indore",
+      "speaker": "Rohan Mehta",
+      "coverImageUrl": null,
+      "registrationUrl": null,
+      "attendees": null
+    },
+    {
+      "id": "7deb35ef-7324-42e6-8d59-b5cf9936e4bf",
+      "slug": "intro-to-fastapi",
+      "title": "Intro to FastAPI",
+      "description": "Build a production-ready REST API in Python with FastAPI.",
+      "type": "Workshop",
+      "startsAt": "2026-07-05 12:29:55.109+00",
+      "endsAt": "2026-07-05 15:29:55.109+00",
+      "venue": "T-Hub, Indore",
+      "speaker": "Asha Verma",
+      "coverImageUrl": null,
+      "registrationUrl": "https://lu.ma/pyindore",
+      "attendees": null
+    },
+    {
+      "id": "1ff9ee54-9545-445c-b93a-92b65abdf6d6",
+      "slug": "pyindore-launch-meetup",
+      "title": "PyIndore Launch Meetup",
+      "description": "Our very first community meetup — lightning talks and networking.",
+      "type": "Meetup",
+      "startsAt": "2026-05-31 12:29:55.109+00",
+      "endsAt": "2026-05-31 15:29:55.109+00",
+      "venue": "91springboard, Indore",
+      "speaker": null,
+      "coverImageUrl": null,
+      "registrationUrl": null,
+      "attendees": 42
+    }
+  ],
+  "communityFeatures": [
+    {
+      "id": "947ea0ae-94b9-4b85-a6b0-7ec87528c08a",
+      "order": 0,
+      "icon": "💬",
+      "title": "Active Discussions",
+      "description": "Daily discussions, Q&A, and knowledge sharing in our online community."
+    },
+    {
+      "id": "6da40d75-bb2b-4480-8ac0-94898d646274",
+      "order": 1,
+      "icon": "🤝",
+      "title": "Mentorship",
+      "description": "Connect with experienced developers who guide you on your Python journey."
+    },
+    {
+      "id": "3abc5ab6-4249-4d20-9e20-64a78c1f86c5",
+      "order": 2,
+      "icon": "🚀",
+      "title": "Project Collaboration",
+      "description": "Find teammates for your projects or contribute to community initiatives."
+    },
+    {
+      "id": "9b869012-3458-4c28-a46f-a2327ff68b8c",
+      "order": 3,
+      "icon": "📚",
+      "title": "Learning Resources",
+      "description": "Curated tutorials, materials, and best practices shared by the community."
+    },
+    {
+      "id": "087acdd4-8f8d-4cc1-b402-4af0ab159aa2",
+      "order": 4,
+      "icon": "🎯",
+      "title": "Career Opportunities",
+      "description": "Job openings, internships, and freelance work in the Python ecosystem."
+    },
+    {
+      "id": "358b1784-05f4-43ff-8f63-84c6c4f04a14",
+      "order": 5,
+      "icon": "🏆",
+      "title": "Recognition",
+      "description": "Celebrate achievements and get recognised for your contributions."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "ac8fda0e-46ed-4d58-a1e0-b8fca01d636b",
+      "order": 0,
+      "name": "Aakash Verma",
+      "role": "Software Engineer",
+      "content": "PyIndore's workshops and community helped me grow into a confident Python developer.",
+      "avatarUrl": null
+    },
+    {
+      "id": "732cc06a-2c20-4241-8422-65cd29b6faf5",
+      "order": 1,
+      "name": "Sneha Agarwal",
+      "role": "Data Scientist",
+      "content": "The mentorship at PyIndore connected me with professionals who guided my data science journey.",
+      "avatarUrl": null
+    }
+  ],
+  "socialLinks": [
+    {
+      "id": "ca232c7f-8a66-49ca-9681-b372bcc6f4cb",
+      "order": 0,
+      "platform": "telegram",
+      "label": "Telegram",
+      "description": "Daily discussions",
+      "url": "https://t.me/pyindore"
+    },
+    {
+      "id": "202525fa-e1d3-48f8-befb-f37640bd5224",
+      "order": 1,
+      "platform": "whatsapp",
+      "label": "WhatsApp",
+      "description": "Community chat",
+      "url": "https://chat.whatsapp.com/CHZQsawCv9YGjYw2MFtcRu"
+    },
+    {
+      "id": "b5d18921-1a1d-43bb-9a71-66ddd5c285a0",
+      "order": 2,
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "description": "Professional network",
+      "url": "https://www.linkedin.com/company/pyindore"
+    },
+    {
+      "id": "44242730-800e-46a1-a82f-4414c39e72a9",
+      "order": 3,
+      "platform": "github",
+      "label": "GitHub",
+      "description": "Open source",
+      "url": "https://github.com/pyindore"
+    },
+    {
+      "id": "f9a1a27a-9524-4e89-aaec-f4759b1fbd64",
+      "order": 4,
+      "platform": "meetup",
+      "label": "Meetup",
+      "description": "Event RSVPs",
+      "url": "https://www.meetup.com/pyindore"
+    },
+    {
+      "id": "7e707955-bd7e-4d9d-9ee9-a0764ce790ef",
+      "order": 5,
+      "platform": "luma",
+      "label": "Luma",
+      "description": "Events",
+      "url": "https://lu.ma/pyindore"
+    },
+    {
+      "id": "66b267fe-8213-4247-a505-74ae1860c4d3",
+      "order": 6,
+      "platform": "twitter",
+      "label": "Twitter",
+      "description": "Follow us",
+      "url": "https://twitter.com/pyindore"
+    }
+  ],
+  "faq": [
+    {
+      "id": "287d3736-dd5f-4e3d-8ab6-142514b2b545",
+      "order": 0,
+      "question": "How do I join PyIndore?",
+      "answer": "Join our Telegram group or follow us on social media to get started. Everyone from beginners to experts is welcome."
+    },
+    {
+      "id": "123b1c50-2f91-4d1b-8a16-afba4eae7fed",
+      "order": 1,
+      "question": "Are events free?",
+      "answer": "Most of our events are free. Premium workshops may charge a small fee to cover venue and material costs."
+    },
+    {
+      "id": "5deffccb-29ad-4984-8690-e9fa0808d256",
+      "order": 2,
+      "question": "Can I speak at an event?",
+      "answer": "Absolutely. We welcome speakers of all experience levels — contact us with your topic idea and we'll help you prepare."
+    }
+  ],
+  "inquiryTypes": [
+    {
+      "id": "67ce5200-db86-4137-affb-8ef1b435c084",
+      "order": 0,
+      "value": "general",
+      "label": "General Inquiry"
+    },
+    {
+      "id": "8b3d4f56-42cd-41b8-86d7-ede61ed67596",
+      "order": 1,
+      "value": "speaker",
+      "label": "Become a Speaker"
+    },
+    {
+      "id": "ce231a2b-0101-4b79-807e-b3d890e5c440",
+      "order": 2,
+      "value": "partnership",
+      "label": "Partnership"
+    },
+    {
+      "id": "618ab060-7fd1-4ef1-b28f-b0d01eb22740",
+      "order": 3,
+      "value": "volunteer",
+      "label": "Volunteer"
+    }
+  ],
+  "sponsors": [],
+  "members": []
+}
