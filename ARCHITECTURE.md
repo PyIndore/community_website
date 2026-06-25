@@ -242,6 +242,13 @@ _See `.env.example`. The default lets the site run with no `.env` against a loca
 | Social platforms (Telegram, WhatsApp, LinkedIn, GitHub, Meetup, Luma, Twitter/X) | Outbound links only | none | Links open externally; no runtime dependency |
 | Contact / newsletter forms ✅ | `POST /contact` (messages) · `POST /subscribe` (newsletter) | none | Client-side; show a friendly error on failure |
 
+### Not yet verified (pending external/admin setup — not bugs in this site)
+
+The site's **reads, JSON fallback, theme, and form submits are all verified** (headed-browser E2E: every section renders from the API; a contact/newsletter submit reaches the admin's inbox/subscribers). Outstanding items live on the **admin** side:
+
+- **Reply/confirmation emails aren't delivered yet.** Submitting the contact form or newsletter succeeds (the site shows the success state), but the admin's auto-reply / double-opt-in confirmation email won't arrive until the admin verifies its **Resend sending domain**. No change needed here when it goes live.
+- **Admin-internal, no effect on this site's render** (tracked in `admin_dashboard_pyindore`): Resend webhook stats (open/click/bounce), scheduled-campaign cron, and a transient `/admin/events` 500 under concurrent first-load.
+
 ---
 
 ## Testing Strategy
@@ -314,3 +321,4 @@ _One row per session. Scope tags: `[UI]` · `[DATA]` data-fetching/API · `[CONT
 | 2026-06-21 | [DATA] | Synced contract with the Admin API now that it's live: base path `/api/v1/public`, events filter `?when=upcoming\|past`, response envelope (`{ items, … }` + `x-request-id`). Events endpoints are available server-side; to be wired into the site during v2. |
 | 2026-06-21 | [DATA] | The **entire** Consumed API Contract is now live on the Admin API — `/site`, `/pages/home`, `/posts`, `/members`, `/testimonials`, `/community-features`, `/faq`, `/social-links`, `/sponsors`, `/inquiry-types`, `/contact` (+ events) all implemented and seeded with the current site content. Flipped every row to ✅ and reconciled field names with the DTOs. Ready to wire into v2. |
 | 2026-06-22 | [DATA][UI] | **v2 wired: the site now renders 100% from the Admin API, with a JSON fallback.** Added a zod-validated data layer (`src/lib/{api,schemas,content,types,fallback}.ts`) reading from `NEXT_PUBLIC_API_BASE_URL` (one swappable env var, default `:3001`); every read falls back to a committed snapshot `src/data/fallback.json` (`scripts/snapshot-fallback.mjs` / `pnpm snapshot`) on any failure. Refactored **every** section (`Hero/About/Events/Community/Contact/Header/Footer`) to be prop-driven from `page.tsx`; `layout.tsx` builds metadata + injects `/site.theme` colours as CSS vars (Tailwind tokens read them, hex as default); contact form → `POST /contact`, newsletter → `POST /subscribe`. Topped up the admin home-section `data` (intro subheadings, About cards/tiles, speaker/join CTAs) so nothing stays hard-coded. Added `zod`; `next.config` allows Supabase image hosts. Verified: `next build` clean; browser-checked **online** (all sections from the API) and **fallback** (dead API → identical render from `fallback.json`); fixed a Postgres-timestamp (`+00`) date-parse bug found via the browser. |
+| 2026-06-22 | [DOCS] | Noted **pending / not-yet-verified** items (admin-side): reply/confirmation emails (needs the admin's verified Resend domain), webhook stats, scheduled-campaign cron, transient `/admin/events` 500. The site's reads, fallback, theme and form submits are all browser-verified. |
