@@ -158,11 +158,18 @@ The boundary between this site and the Admin Dashboard API is the most fragile s
 ---
 
 ## Git & Commits
-- Work happens on the `v2` branch. Small, focused commits — one logical change each.
+- Small, focused commits — one logical change each.
 - Prefix commit messages with scope when useful: `ui:`, `data:`, `content:`, `style:`, `infra:`.
 - Commit messages: imperative mood, explain *why* if non-obvious.
 - Don't commit generated files, build artefacts (`.next/`), or local env.
 - **Don't commit or push unless explicitly asked.**
+
+### Branching & PR workflow (enforced in both repos)
+- **`main` is protected — NEVER commit or push to it directly.** Direct pushes to `main` are banned.
+- **`dev` is the integration branch; all work branches off `dev`.**
+- **Every change goes on its own branch**, named by type: `feature/…`, `fix/…`, `patch/…`, or `update/…`.
+- Open a **PR from that branch into `dev`**. After it merges into `dev`, `dev` is later merged into `main` for a release.
+- Flow: `feature/x` → PR → `dev` → (later) `dev` → `main`. Same in `admin_dashboard_pyindore`.
 
 ---
 
