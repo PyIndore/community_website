@@ -229,6 +229,7 @@ _Never commit real values. `NEXT_PUBLIC_*` is exposed to the browser — never p
 | -------- | ------- | -------- | ------- | ------- |
 | `NEXT_PUBLIC_API_BASE_URL` ✅ | Base URL of the Admin Dashboard public API — the **one** place to swap for deploy | yes | `http://localhost:3001/api/v1/public` (in `src/lib/api.ts`) | Yes |
 | `ADMIN_API_KEY` 🔶 | Server-side key for privileged/proxied calls, if the API ever requires one | only if API needs auth | — | **No — server only** |
+| `REVALIDATE_SECRET` ✅ | Shared secret authorising the on-demand cache purge `POST /api/revalidate` (the admin "Refresh site" button). Must equal the admin's `REVALIDATE_SECRET`. | for instant updates | — (unset → endpoint returns 503) | **No — server only** |
 
 _See `.env.example`. The default lets the site run with no `.env` against a local admin._
 
@@ -241,6 +242,7 @@ _See `.env.example`. The default lets the site run with no `.env` against a loca
 | PyIndore Admin Dashboard API | All dynamic content (events, posts, etc.) | none (public reads) | zod-validate → **fall back to `src/data/fallback.json`**; never crashes/blanks |
 | Social platforms (Telegram, WhatsApp, LinkedIn, GitHub, Meetup, Luma, Twitter/X) | Outbound links only | none | Links open externally; no runtime dependency |
 | Contact / newsletter forms ✅ | `POST /contact` (messages) · `POST /subscribe` (newsletter) | none | Client-side; show a friendly error on failure |
+| Cache purge (inbound) ✅ | `POST /api/revalidate` — the admin "Refresh site" button calls this to `revalidatePath("/", "layout")` | `x-revalidate-secret` = `REVALIDATE_SECRET` | 503 when secret unset; 401 on mismatch |
 
 ### Not yet verified (pending external/admin setup — not bugs in this site)
 
@@ -324,3 +326,4 @@ _One row per session. Scope tags: `[UI]` · `[DATA]` data-fetching/API · `[CONT
 | 2026-06-22 | [DOCS] | Noted **pending / not-yet-verified** items (admin-side): reply/confirmation emails (needs the admin's verified Resend domain), webhook stats, scheduled-campaign cron, transient `/admin/events` 500. The site's reads, fallback, theme and form submits are all browser-verified. |
 | 2026-06-25 | [BE] | **Production fix:** the deployed build had `localhost:3001` baked into the API base (`NEXT_PUBLIC_API_BASE_URL` unset at build), so live reads fell back to the snapshot and browser forms POSTed to localhost. `api.ts` now defaults to `https://admin.pyindore.com/api/v1/public` in **production** builds (localhost in dev), still overridable via `NEXT_PUBLIC_API_BASE_URL`; documented the build-time nature in `.env.example`. Requires a redeploy (build-time value). |
 | 2026-06-25 | [BE] | Moved the API base into **one** module (`src/lib/api-base.ts`) — the **client forms** (`Contact`, `NewsletterForm`) had their own hard-coded `localhost:3001` default and now import the shared, production-aware value so they can't drift from the data layer. |
+| 2026-06-26 | [BE] | **On-demand cache purge.** Added `POST /api/revalidate` (`src/app/api/revalidate/route.ts`) — secret-guarded (`REVALIDATE_SECRET`), calls `revalidatePath("/", "layout")`. The admin "Refresh site" button hits it so content edits show immediately without waiting out the ISR windows. Server-to-server (no CORS); 503 when unset, 401 on mismatch. |
