@@ -182,6 +182,7 @@ _Filled in by the AI as conventions emerge — naming, folder layout, domain voc
 - **v2 data layer (built):** all content comes through `src/lib/content.ts` accessors → `src/lib/api.ts` (zod-validate via `schemas.ts`, fall back to `src/data/fallback.json` on any failure). **Never fetch the Admin API directly from a component** — add/extend an accessor. The base URL is the single env var `NEXT_PUBLIC_API_BASE_URL` (default in `api.ts`); don't hard-code it elsewhere.
 - **Components are prop-driven** — `page.tsx` (server) fetches everything and passes data down; sections take props (no hard-coded content arrays). The API ships **data**, not UI: platform→icon/colour lives in `social-meta.ts`, About-card icons map by a string key. Section-specific extras (CTAs, About cards/tiles, subheadings) live in that home **Section's `data`/`items`** — edit them in the admin, then **`pnpm snapshot`** to refresh `fallback.json`.
 - **Fallback parity:** after changing admin content/shapes, run `pnpm snapshot` so the offline copy matches. Both online and dead-API must render identically.
+- **On-demand revalidation:** `POST /api/revalidate` (`src/app/api/revalidate/route.ts`) lets the admin's "Refresh site" button purge this site's ISR cache (`revalidatePath`) so edits show without waiting out the windows. Guarded by `REVALIDATE_SECRET` (server-only); keep it server-to-server — never expose the secret or call it from the browser.
 - [Auto — grows over time]
 
 ---
