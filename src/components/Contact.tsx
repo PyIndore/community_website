@@ -45,8 +45,11 @@ export default function Contact({
     }
   }
 
+  // bg-white/5 (a channel-based colour) renders a translucent dark field over the section —
+  // unlike bg-dark-bg/60, whose var()-based colour + opacity compiled to invalid CSS and fell
+  // back to a white input, hiding the near-white text. text-dark-text now reads clearly.
   const inputClass =
-    'w-full bg-dark-bg/60 backdrop-blur-sm border border-dark-border rounded-xl px-4 py-3 text-dark-text text-sm placeholder-dark-tertiary focus:border-python-blue/50 focus:outline-none transition-all';
+    'w-full bg-white/5 backdrop-blur-sm border border-dark-border rounded-xl px-4 py-3 text-dark-text text-sm placeholder-dark-muted focus:border-python-blue/50 focus:bg-white/10 focus:outline-none transition-all';
   const labelClass = 'text-xs font-semibold text-dark-muted mb-1.5 block uppercase tracking-wide';
 
   return (
@@ -79,11 +82,11 @@ export default function Contact({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className={labelClass}>Full Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className={inputClass} placeholder="Jane Doe" />
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className={inputClass} placeholder="Guido van Rossum" />
                 </div>
                 <div>
                   <label className={labelClass}>Email Address</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="jane@example.com" />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="you@pyindore.com" />
                 </div>
               </div>
 
@@ -100,7 +103,7 @@ export default function Contact({
 
               <div>
                 <label className={labelClass}>Message</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className={`${inputClass} resize-none`} placeholder="How can we help you?" />
+                <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} className={`${inputClass} resize-none`} placeholder="Bugs, ideas, or your favourite one-liner — we're listening." />
               </div>
 
               <button type="submit" disabled={status === 'sending'} className="w-full bg-python-blue text-white rounded-xl py-3.5 font-semibold hover:bg-python-blue-bright btn-glow transition-all duration-200 disabled:opacity-60">

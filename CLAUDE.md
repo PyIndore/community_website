@@ -51,7 +51,7 @@ The test: every changed line should trace directly to the user's request.
 
 ## Bootstrap (First Session)
 - If the Project Description in ARCHITECTURE.md is empty or still says `[PASTE PROJECT DESCRIPTION HERE]`, stop and ask before doing anything else. (It is already filled in for this project — confirm it still matches reality.)
-- This is a **v2 revamp** on the `v2` branch. The v1 code under `src/` is a static single-page marketing site with hard-coded/placeholder content. Before reusing or deleting v1 code, check ARCHITECTURE.md's migration notes and confirm scope with the owner.
+- The **v2 revamp** is now merged into `main`; ongoing work happens on `dev` and its feature branches (see Branching & PR workflow). The v1 code under `src/` was a static single-page marketing site with hard-coded/placeholder content — before reusing or deleting any leftover v1 code, check ARCHITECTURE.md's migration notes and confirm scope with the owner.
 - Before adopting a new major dependency, UI library, or changing the data-fetching strategy, propose options (don't install) and wait for approval.
 
 ---
@@ -182,6 +182,7 @@ _Filled in by the AI as conventions emerge — naming, folder layout, domain voc
 - **v2 data layer (built):** all content comes through `src/lib/content.ts` accessors → `src/lib/api.ts` (zod-validate via `schemas.ts`, fall back to `src/data/fallback.json` on any failure). **Never fetch the Admin API directly from a component** — add/extend an accessor. The base URL is the single env var `NEXT_PUBLIC_API_BASE_URL` (default in `api.ts`); don't hard-code it elsewhere.
 - **Components are prop-driven** — `page.tsx` (server) fetches everything and passes data down; sections take props (no hard-coded content arrays). The API ships **data**, not UI: platform→icon/colour lives in `social-meta.ts`, About-card icons map by a string key. Section-specific extras (CTAs, About cards/tiles, subheadings) live in that home **Section's `data`/`items`** — edit them in the admin, then **`pnpm snapshot`** to refresh `fallback.json`.
 - **Fallback parity:** after changing admin content/shapes, run `pnpm snapshot` so the offline copy matches. Both online and dead-API must render identically.
+- **On-demand revalidation:** `POST /api/revalidate` (`src/app/api/revalidate/route.ts`) lets the admin's "Refresh site" button purge this site's ISR cache (`revalidatePath`) so edits show without waiting out the windows. Guarded by `REVALIDATE_SECRET` (server-only); keep it server-to-server — never expose the secret or call it from the browser.
 - [Auto — grows over time]
 
 ---
