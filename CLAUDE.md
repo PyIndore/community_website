@@ -51,7 +51,7 @@ The test: every changed line should trace directly to the user's request.
 
 ## Bootstrap (First Session)
 - If the Project Description in ARCHITECTURE.md is empty or still says `[PASTE PROJECT DESCRIPTION HERE]`, stop and ask before doing anything else. (It is already filled in for this project — confirm it still matches reality.)
-- This is a **v2 revamp** on the `v2` branch. The v1 code under `src/` is a static single-page marketing site with hard-coded/placeholder content. Before reusing or deleting v1 code, check ARCHITECTURE.md's migration notes and confirm scope with the owner.
+- The **v2 revamp** is now merged into `main`; ongoing work happens on `dev` and its feature branches (see Branching & PR workflow). The v1 code under `src/` was a static single-page marketing site with hard-coded/placeholder content — before reusing or deleting any leftover v1 code, check ARCHITECTURE.md's migration notes and confirm scope with the owner.
 - Before adopting a new major dependency, UI library, or changing the data-fetching strategy, propose options (don't install) and wait for approval.
 
 ---
